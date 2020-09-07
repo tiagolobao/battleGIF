@@ -1,0 +1,13 @@
+{
+  "name": "battle_gif",
+  "version": "0.0.1",
+  "description": "Discord Bot to play with friends - Best Gif wins!",
+  "main": "index.js",
+  "repository": "git@github.com:tiagolobao/battleGIF.git",
+  "author": "Tiago Lobao <tiago.blobao@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
