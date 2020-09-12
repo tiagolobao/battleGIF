@@ -12,6 +12,18 @@
 
 let Helpers = {
 
+    // Constants for states
+    GAME_STATES: {
+        IDLE: 0,
+        RUNNING: 1,
+    },
+    
+    /**
+     * Check if the message should be handled
+     * @param {Object} message - Discord message object
+     * @param {String} prefix - Obrigatory first charaters of the message string to check 
+     * @returns {boolean}
+     */
     isValidMessage(message,prefix){
         if(
             message.author.bot ||
