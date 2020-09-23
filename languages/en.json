@@ -1,0 +1,36 @@
+{
+    "BOT_ACTIVITY": ["GIFing around"],
+
+    "COMMAND_NOT_FOUND_MESSAGE": ["Sorry, command not found"],
+    "GAME_START_MESSAGE": ["Round started, send your content!"],
+    "GAME_STOP_MESSAGE": ["Ok, round halted... :/"],
+    "TWICE_COMPETITOR_FOUND": ["Do you wanna play twice?? do you think I didn't notice??"],
+    "GAME_IS_RUNNING": ["There is already a game running..."],
+
+    "GAME_WINNER": [
+        "The winner of this round was:",
+        "with a sum of",
+        "votes"
+    ],
+
+    "COOL_MESSAGE_LIST": [
+        "What? I dunno what to do with this command...",
+        "What do you want???"
+    ],
+    "TRANSFORMING_MESSAGE_LIST":[
+        "I'm starting to get angry... what do you want?",
+        "Don't you have anything elso to do rather than mocking a bot?"
+    ],
+    "MAD_MESSAGE_LIST": [
+        "GO AWAY WITH THESE CRAZY COMMANDS!",
+        "WTF IS THIS COMMAND?",
+    ],
+    "COOLDOWN_MESSAGE": [
+        "I'm cool with you now..."
+    ],
+
+    "HELP_MESSAGE": [
+        "Available commands: start, stop, help"
+    ]
+
+}

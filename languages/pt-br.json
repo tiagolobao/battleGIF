@@ -1,0 +1,37 @@
+{
+    "BOT_ACTIVITY": ["Gifando com a rapaziada"],
+
+    "COMMAND_NOT_FOUND_MESSAGE": ["Desculpa, comando não encontrado"],
+    "GAME_START_MESSAGE": ["A partida começou! Mandem seus GIFs!"],
+    "GAME_STOP_MESSAGE": ["Ok, vamos parar a partida... :/"],
+    "TWICE_COMPETITOR_FOUND": ["Ta dando uma de joão sem braço querendo jogar duas vezes né? to ligado na sua"],
+    "GAME_IS_RUNNING": ["Ta Rolando um jogo já..."],
+
+    "GAME_WINNER": [
+        "O vencedor dessa partida foi:",
+        "com um total de",
+        "votos"
+    ],
+
+    "COOL_MESSAGE_LIST": [
+        "Oi? Eu não sei o que fazer com esse comando...",
+        "Vey, não entendi qual é a sua. O que você quer?"
+    ],
+    "TRANSFORMING_MESSAGE_LIST":[
+        "TA ZOANDO COM MINHA CARA? TO PUTO CONTIGO AGORA",
+        "CE TA TIRANDO ONDA CMG NE?? VA PROCURA O QUE FAZER"
+    ],
+    "MAD_MESSAGE_LIST": [
+        "QUE MIZERA DE COMANDO É ESSE MAN????",
+        "TODO NOIADO VOCÊ! O QUE VOCÊ QUER MERMÃO???",
+        "NÃO SOU SEUS CONTATINHO PRA VOCÊ ME ENROLAR NÃO, FALE DIREITO O QUE VOCÊ QUER!"
+    ],
+    "COOLDOWN_MESSAGE": [
+        "Já to deboa contigo..."
+    ],
+
+    "HELP_MESSAGE": [
+        "Comandos disponíveis: start, stop, help"
+    ]
+
+}

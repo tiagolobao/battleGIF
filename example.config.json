@@ -1,4 +1,9 @@
 {
-    "BOT_TOKEN": "bot_token_here",
-    "PREFIX": "bGIF!"
+    "BOT_TOKEN": "bot-token",
+    "TENOR_KEY": "tenor-token",
+    "PREFIX": "!bgdev",
+    "LANGUAGE": "en",
+    "ANGRY": true,
+    "COOLDOWN_TIME": 5,
+    "ANGRY_COUNT_LIMIT": 3 
 }

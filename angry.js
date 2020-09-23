@@ -11,7 +11,10 @@
  * ...
  */
 
-const CONFIG = require('./config.json');
+const CONFIG = require('./config');
+const Helpers = require('./helpers');
+
+const TEXTS = require(`./languages/${CONFIG.LANGUAGE}`);
 
 class Angry{
 
@@ -85,16 +88,13 @@ class Angry{
             if(user.name == userName){
                 switch(user.state){
                     case this.STATES.ANGRY:
-                        messageIndex = Math.floor(Math.random() * CONFIG.MAD_MESSAGE_LIST.length);
-                        return CONFIG.MAD_MESSAGE_LIST[messageIndex];
+                        return Helpers.chooseAmongMessages(TEXTS.MAD_MESSAGE_LIST);
                         break;
                     case this.STATES.COOL:
-                        messageIndex = Math.floor(Math.random() * CONFIG.COOL_MESSAGE_LIST.length);
-                        return CONFIG.COOL_MESSAGE_LIST[messageIndex];
+                        return Helpers.chooseAmongMessages(TEXTS.COOL_MESSAGE_LIST);
                         break;
                     case this.STATES.TRANSFORMING:
-                        messageIndex = Math.floor(Math.random() * CONFIG.TRANSFORMING_MESSAGE_LIST.length);
-                        return CONFIG.TRANSFORMING_MESSAGE_LIST[messageIndex];
+                        return chooseAmongMessages(TEXTS.TRANSFORMING_MESSAGE_LIST);
                         break;
                 }
                 break;

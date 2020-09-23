@@ -11,7 +11,9 @@
  */
 
 const request = require('request');
-const CONFIG = require('./config.json');
+const CONFIG = require('./config');
+
+const TEXTS = require(`./languages/${CONFIG.LANGUAGE}`);
 
 let Helpers = {
     
@@ -42,39 +44,6 @@ let Helpers = {
     getArgs(message)
     {
         return message.content.slice(CONFIG.PREFIX.length).split(' ').pop();
-    },
-
-
-    /**
-     * Check if a url is a valid gif from TENOR.COM
-     * @param {String} url - Url to the tenor gif
-     * @returns {boolean}
-     */
-    isValidTenorGif(url)
-    {
-        let isValid = false;
-        const gifID = url.match(/(?<=https:\/\/tenor.com\/view\/[a-zA-Z-]*)[0-9].*$/);
-        if( gifID != null )
-        {
-            request.get({
-                url: `https://api.tenor.com/v1/gifs?ids=${gifID}&key=${CONFIG.TENOR_KEY}&media_filter=minimal&limit=1`
-            }, (error, response, body) => {
-                if( error != null )
-                {
-                    if( body.results.length > 0 )
-                    {
-                        // Then the GIF is valid
-                        isValid = true;
-                    }
-                }
-                else
-                {
-                    console.warning('Bad response from TENOR API');
-                    console.warning(error);
-                }
-            });
-        }
-        return isValid;
     },
 
     /**
@@ -118,6 +87,47 @@ let Helpers = {
                 resolve(false);
             }
         });
+    },
+
+    /**
+     * Randomly choose one text option
+     * @param {Array} - List of Strings (messages) to be choosen
+     * @returns {String}
+     */
+    chooseAmongMessages(messageList)
+    {
+        const messageIndex = Math.floor(Math.random() * messageList.length);
+        return messageList[messageIndex];
+    },
+
+    /**
+     * @param {}
+     */
+    chooseRandomWord()
+    {
+        return new Promise((resolve, reject)=>{
+            request.get({
+                url: 'https://api.dicionario-aberto.net/random'
+            }, (error, response, body) => {
+                if( error == null )
+                {
+                    resolve(body.word);
+                }
+                else{
+                    reject('Error @ Dictionary API');
+                }
+            });
+        });
+    },
+
+    /**
+     * Generate message to announce the winner
+     * @param {String} name
+     * @param {Integer} votes 
+     */
+    generateWinnerMessage(name, votes)
+    {
+        return `${TEXTS.GAME_WINNER[0]} ${name} ${TEXTS.GAME_WINNER[1]} ${votes} ${TEXTS.GAME_WINNER[2]}`;
     }
 
 }
