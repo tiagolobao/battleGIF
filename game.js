@@ -23,8 +23,9 @@ class Game{
      * @constructor
      * No arguments. There is only one initial state for the game
      */
-    constructor()
+    constructor(guildId)
     {
+        this.guiId = guildId;
         this.state = this.GAME_STATES.IDLE, // If game is running or not
         this.channel = null, // From where the game was started
         this.theme = null, // Theme of the running round

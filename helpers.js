@@ -12,6 +12,7 @@
 
 const request = require('request');
 const CONFIG = require('./config');
+const Game = require('./game');
 
 const TEXTS = require(`./languages/${CONFIG.LANGUAGE}`);
 
@@ -128,6 +129,26 @@ let Helpers = {
     generateWinnerMessage(name, votes)
     {
         return `${TEXTS.GAME_WINNER[0]} ${name} ${TEXTS.GAME_WINNER[1]} ${votes} ${TEXTS.GAME_WINNER[2]}`;
+    },
+
+    /**
+     * Get the game accourding to the guild
+     * @param {Integer} guildId - ID of the guild requested
+     * @param {Array} game - Array with list of games
+     * @returns {Object} Game instance
+     */
+    selectGuild(guildId, game)
+    {
+        let cnt;
+        for ( cnt = 0; cnt < game.length; cnt++) {
+            if( guildId === game[cnt].guildId )
+            {
+                return cnt;
+            }
+        }
+        // If was not found, create new instance
+        game.push(new Game(guildId));
+        return cnt;
     }
 
 }

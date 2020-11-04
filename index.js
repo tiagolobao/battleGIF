@@ -24,26 +24,28 @@ const TEXTS = require(`./languages/${CONFIG.LANGUAGE}`);
 // ------------------------- Declare and init variables -------------------------
 // ------------------------------------------------------------------------------
 const client = new Discord.Client();
-let game = new Game();
 let angry = new Angry();
+let game = [];
 
 // ------------------------------------------------------------------------------
 // ------------------------- Define bot reponse behavior ------------------------
 // ------------------------------------------------------------------------------
 client.on('message', m => {
+
+    let guild = Helpers.selectGuild(m.channel.guild.id, game);
     /**
      * ------ BOT WAITING TO START A ROUND ------ 
         * - Answer unknown commands
         * - 'start "theme"' command => Runs the game with the selected theme
         * */
-    if( !game.isRunning() )
+    if( !game[guild].isRunning() )
     {
         if( Helpers.isValidMessage(m) ){
             const args = Helpers.getArgs(m);
             if (args === 'start')
             {
                 m.reply(Helpers.chooseAmongMessages(TEXTS.GAME_START_MESSAGE));
-                game.run(m.channel, "noTheme");
+                game[guild].run(m.channel, "noTheme");
             }
             else if(args === 'help')
             {
@@ -69,7 +71,7 @@ client.on('message', m => {
             if (args === 'stop')
             {
                 m.reply(Helpers.chooseAmongMessages(TEXTS.GAME_STOP_MESSAGE));
-                game.stop();
+                game[guild].stop();
             }
             else if(args === 'help')
             {
@@ -83,7 +85,7 @@ client.on('message', m => {
         else
         {
             // If was in the right channel
-            if(game.isGameChannel(m.channel.id))
+            if(game[guild].isGameChannel(m.channel.id))
             {
                 // If a image was sent
                 Helpers.checkContainsImage(m)
@@ -91,7 +93,7 @@ client.on('message', m => {
                     if(isValid)
                     {
                         let addWasSucceed;
-                        addWasSucceed = game.addCompetitor(
+                        addWasSucceed = game[guild].addCompetitor(
                             m.author.username,
                             m.author.id,
                             m.id
@@ -113,14 +115,15 @@ client.on('message', m => {
 // Votes increments
 client.on('messageReactionAdd', function(reaction, user)
 {
-    if( game.isRunning() )
+    let guild = Helpers.selectGuild(m.channel.guild.id, game);
+    if( game[guild].isRunning() )
     {
-        game.addVotePointIfCompeting(reaction.message.id);
-        if( game.canFinish(0) )
+        game[guild].addVotePointIfCompeting(reaction.message.id);
+        if( game[guild].canFinish(0) )
         {
-            let winner = game.getWinner();
-            game.channel.send(Helpers.generateWinnerMessage(winner.name,winner.votes));
-            game.stop();
+            let winner = game[guild].getWinner();
+            game[guild].channel.send(Helpers.generateWinnerMessage(winner.name,winner.votes));
+            game[guild].stop();
         }
     }
 });
